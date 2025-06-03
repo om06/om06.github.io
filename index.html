@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hariom Tiwari - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        :root {
+            --primary-bg: #0f0f23;
+            --secondary-bg: #1a1a2e;
+            --card-bg: rgba(30, 30, 46, 0.8);
+            --accent-primary: #7c3aed;
+            --accent-secondary: #06b6d4;
+            --accent-tertiary: #f59e0b;
+            --accent-pink: #ec4899;
+            --accent-green: #10b981;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --hover-glow: rgba(124, 58, 237, 0.2);
+        }
+    
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+        }
+    
+        /* Animated Background Gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: gradientShift 20s ease infinite;
+        }
+    
+        @keyframes gradientShift {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+    
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+    
+        ::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+        }
+    
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-1);
+            border-radius: 5px;
+        }
+    
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    
+        /* Highlight Keywords */
+        .highlight {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+    
+        .highlight-secondary {
+            color: var(--accent-secondary);
+            font-weight: 600;
+        }
+    
+        .highlight-number {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+    
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(15, 15, 35, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+        }
+    
+        nav.scrolled {
+            padding: 15px 50px;
+            box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.3);
+        }
+    
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+    
+        .logo:hover {
+            transform: scale(1.05);
+        }
+    
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+    
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+    
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+    
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+    
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+    
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent-primary);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+    
+        /* Hero Section - Full Height with Better Content Management */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 50px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+    
+        /* Profile Image Container */
+        .profile-img-container {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin-bottom: 50px;
+            flex-shrink: 0;
+        }
+    
+        .profile-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 200px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+    
+        .profile-img-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            z-index: -1;
+            animation: rotate-border 4s linear infinite;
+        }
+    
+        @keyframes rotate-border {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+    
+        /* Decorative elements around profile image */
+        .profile-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    
+        .decoration-circle {
+            position: absolute;
+            border: 2px solid var(--accent-primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse-circle 3s ease-in-out infinite;
+        }
+    
+        .decoration-circle:nth-child(1) {
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+    
+        .decoration-circle:nth-child(2) {
+            width: 140%;
+            height: 140%;
+            top: -20%;
+            left: -20%;
+            animation-delay: 1s;
+        }
+    
+        .decoration-circle:nth-child(3) {
+            width: 160%;
+            height: 160%;
+            top: -30%;
+            left: -30%;
+            animation-delay: 2s;
+        }
+    
+        @keyframes pulse-circle {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.1;
+            }
+        }
+    
+        /* Floating tech icons around profile */
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+    
+        .floating-icon {
+            position: absolute;
+            font-size: 20px;
+            color: var(--accent-primary);
+            opacity: 0.6;
+            animation: float-icon 6s ease-in-out infinite;
+        }
+    
+        .floating-icon:nth-child(1) { top: -25px; left: -25px; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: -25px; right: -25px; animation-delay: 1s; }
+        .floating-icon:nth-child(3) { bottom: -25px; left: -25px; animation-delay: 2s; }
+        .floating-icon:nth-child(4) { bottom: -25px; right: -25px; animation-delay: 3s; }
+        .floating-icon:nth-child(5) { top: 50%; left: -40px; animation-delay: 4s; }
+        .floating-icon:nth-child(6) { top: 50%; right: -40px; animation-delay: 5s; }
+    
+        @keyframes float-icon {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-10px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(0) rotate(180deg);
+            }
+            75% {
+                transform: translateY(10px) rotate(270deg);
+            }
+        }
+    
+        /* Hero Text Styles */
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+    
+        .hero h1 span {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .hero .subtitle span {
+            color: var(--accent-secondary);
+            font-weight: 600;
+        }
+
+        .hero .description {
+            max-width: 700px;
+            font-size: clamp(14px, 2vw, 16px);
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Contact Links */
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                        var(--gradient-1) border-box;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0.2;
+            transition: left 0.3s ease;
+        }
+
+        .contact-links a:hover::before {
+            left: 0;
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .scroll-icon {
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--accent-primary);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-icon::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 4px;
+            animation: scroll-animation 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes scroll-animation {
+            0% {
+                opacity: 1;
+                top: 6px;
+            }
+            50% {
+                opacity: 0.5;
+                top: 20px;
+            }
+            100% {
+                opacity: 0;
+                top: 20px;
+            }
+        }
+
+        /* Hide scroll indicator when scrolled */
+        .hero.scrolled .scroll-indicator {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+                /* Section Headers */
+                .section-header {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover::before {
+            transform: translateX(0);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
+        }
+
+        .skill-category h3 {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 25px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .skill-tag:hover {
+            background: rgba(124, 58, 237, 0.2);
+            transform: scale(1.05) translateY(-2px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .skill-tag i {
+            font-size: 20px;
+        }
+
+        /* Skill Icon Colors */
+        .skill-tag .devicon-python-plain { color: #3776AB; }
+        .skill-tag .devicon-java-plain { color: #007396; }
+        .skill-tag .devicon-go-original-wordmark { color: #00ADD8; }
+        .skill-tag .devicon-javascript-plain { color: #F7DF1E; }
+        .skill-tag .devicon-c-plain { color: #A8B9CC; }
+        .skill-tag .devicon-html5-plain { color: #E34C26; }
+        .skill-tag .devicon-css3-plain { color: #1572B6; }
+        .skill-tag .devicon-php-plain { color: #777BB4; }
+        .skill-tag .devicon-django-plain { color: #092E20; }
+        .skill-tag .devicon-fastapi-plain { color: #009688; }
+        .skill-tag .devicon-flask-original { color: #000000; }
+        .skill-tag .devicon-postgresql-plain { color: #336791; }
+        .skill-tag .devicon-mysql-plain { color: #4479A1; }
+        .skill-tag .devicon-mongodb-plain { color: #47A248; }
+        .skill-tag .devicon-redis-plain { color: #DC382D; }
+        .skill-tag .devicon-amazonwebservices-original { color: #FF9900; }
+        .skill-tag .devicon-googlecloud-plain { color: #4285F4; }
+        .skill-tag .devicon-docker-plain { color: #2496ED; }
+        .skill-tag .devicon-kubernetes-plain { color: #326CE5; }
+        .skill-tag .devicon-jenkins-line { color: #D24939; }
+        .skill-tag .devicon-github-original { color: #181717; }
+        .skill-tag .devicon-gitlab-plain { color: #FCA121; }
+        .skill-tag .devicon-terraform-plain { color: #623CE4; }
+        .skill-tag .devicon-grafana-original { color: #F46800; }
+        
+        /* Generic icon colors */
+        .skill-tag .fa-database { color: #4DB33D; }
+        .skill-tag .fa-rocket { color: #E91E63; }
+        .skill-tag .fa-cloud { color: #2196F3; }
+        .skill-tag .fa-code { color: #9C27B0; }
+        .skill-tag .fa-server { color: #FF5722; }
+        .skill-tag .fa-shield-alt { color: #4CAF50; }
+        .skill-tag .fa-chart-line { color: #FF9800; }
+        .skill-tag .fa-users { color: #00BCD4; }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            nav.scrolled {
+                padding: 12px 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(15, 15, 35, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 100px 30px 30px;
+                transition: right 0.3s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+                overflow-y: auto;
+            }
+            
+            .nav-links.show {
+                right: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin: 15px 0;
+            }
+            
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 10px 0;
+                font-size: 18px;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links a:hover {
+                padding-left: 10px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+
+            .hero {
+                padding: 70px 20px 40px;
+                min-height: 100vh;
+                min-height: 100dvh; /* Better mobile viewport handling */
+            }
+            
+            .profile-img-container {
+                width: 160px;
+                height: 160px;
+                margin-bottom: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+                margin-bottom: 10px;
+            }
+            
+            .hero .subtitle {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            
+            .hero .description {
+                font-size: 14px;
+                margin-bottom: 20px;
+                padding: 0 10px;
+            }
+            
+            .contact-links {
+                gap: 10px;
+            }
+            
+            .contact-links a {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            .floating-icon {
+                display: none;
+            }
+            
+            .scroll-indicator {
+                bottom: 20px;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+        }
+
+        /* Overlay for mobile menu */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.show {
+            display: block;
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .profile-img-container {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .contact-links a {
+                gap: 4px;
+            }
+            
+            .contact-links a span.contact-label {
+                display: none;
+            }
+        }
+
+        /* Landscape mode adjustments */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: 60px 50px 30px;
+            }
+            
+            .profile-img-container {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+                margin-bottom: 8px;
+            }
+            
+            .hero .subtitle {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            
+            .hero .description {
+                margin-bottom: 15px;
+            }
+            
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--gradient-1);
+            opacity: 0.5;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(124, 58, 237, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .timeline-content:hover::after {
+            transform: scale(1);
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(10px);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .timeline-header h3 {
+            color: var(--text-primary);
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .timeline-header .company {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .timeline-date {
+            color: var(--accent-secondary);
+            font-size: 14px;
+            font-family: 'Fira Code', monospace;
+            background: rgba(6, 182, 212, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+
+        .timeline-description ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .timeline-description li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-size: 18px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .project-header h3 {
+            color: var(--text-primary);
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-header h3 i {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-date {
+            color: var(--accent-secondary);
+            font-size: 14px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-badge {
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(6, 182, 212, 0.1));
+            color: var(--accent-secondary);
+            border-radius: 20px;
+            font-size: 12px;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(6, 182, 212, 0.2));
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
+        }
+
+        .blog-header {
+            background: var(--gradient-1);
+            padding: 80px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card:nth-child(2) .blog-header { background: var(--gradient-2); }
+        .blog-card:nth-child(3) .blog-header { background: var(--gradient-3); }
+        .blog-card:nth-child(4) .blog-header { background: var(--gradient-4); }
+        .blog-card:nth-child(5) .blog-header { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .blog-card:nth-child(6) .blog-header { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.03)">{ }</text></svg>');
+            background-size: 100px;
+        }
+
+        .blog-icon {
+            font-size: 48px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        .blog-content {
+            padding: 30px;
+        }
+
+        .blog-content h3 {
+            color: var(--text-primary);
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .blog-date {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Achievements Section */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .achievement-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--hover-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .achievement-card:hover::before {
+            opacity: 1;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
+        }
+
+        .achievement-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Additional animations and states */
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .achievement-card:nth-child(2) .achievement-icon { 
+            background: var(--gradient-2); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        .achievement-card:nth-child(3) .achievement-icon { 
+            background: var(--gradient-3); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        .achievement-card:nth-child(4) .achievement-icon { 
+            background: var(--gradient-4); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .achievement-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .achievement-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 16px;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 10px;
+        }
+
+        .form-group label {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(124, 58, 237, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            justify-self: start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: var(--text-secondary);
+            background: var(--secondary-bg);
+            margin-top: 100px;
+        }
+
+        footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive adjustments for all sections */
+        @media (max-width: 768px) {
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-item::before {
+                left: -26px;
+            }
+
+            .skills-container,
+            .projects-grid,
+            .blog-grid,
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                padding: 30px 20px;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Mobile Text Justification */
+        
+        .about-content {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        
+        .about-content p {
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+    
+
+        /* Ensure proper spacing for anchor links */
+        #about,
+        #skills,
+        #experience,
+        #projects,
+        #achievements,
+        #blog,
+        #contact {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">HT</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-img-container">
+                <div class="profile-img-wrapper">
+                    <img src="assets/dp.jpeg" alt="Hariom Tiwari" class="profile-img">
+                </div>
+                <div class="profile-decoration">
+                    <div class="decoration-circle"></div>
+                    <div class="decoration-circle"></div>
+                    <div class="decoration-circle"></div>
+                </div>
+                <div class="floating-icons">
+                    <i class="fab fa-python floating-icon"></i>
+                    <i class="fab fa-aws floating-icon"></i>
+                    <i class="fab fa-docker floating-icon"></i>
+                    <i class="fas fa-cloud floating-icon"></i>
+                    <i class="fas fa-database floating-icon"></i>
+                    <i class="fas fa-code floating-icon"></i>
+                </div>
+            </div>
+            
+            <h1>Hi, I'm <span>Hariom Tiwari</span></h1>
+            <p class="subtitle">
+                <span>Backend Engineer</span> | <span>Cloud Architect</span> | <span>DevOps Specialist</span>
+            </p>
+            <p class="description">
+                Accomplished <span class="highlight">Tech Lead</span> with <span class="highlight-number">7+ years'</span> experience in backend 
+                engineering, cloud architecture, and DevOps. Highly skilled in <span class="highlight-secondary">Python</span>, 
+                <span class="highlight-secondary">AWS</span>, and <span class="highlight-secondary">microservices</span>, with a strong record of team building, 
+                strategic planning, and cross-department collaboration to scale reliable distributed systems for <span class="highlight-number">millions of users</span>.
+            </p>
+            <div class="contact-links">
+                <a href="tel:+919695478677">
+                    <i class="fas fa-phone"></i> <span class="contact-label">+91 9695478677</span>
+                </a>
+                <a href="mailto:hariom.tiwari.006@gmail.com">
+                    <i class="fas fa-envelope"></i> <span class="contact-label">Email</span>
+                </a>
+                <a href="https://www.linkedin.com/in/om06" target="_blank">
+                    <i class="fab fa-linkedin"></i> <span class="contact-label">LinkedIn</span>
+                </a>
+                <a href="https://github.com" target="_blank">
+                    <i class="fab fa-github"></i> <span class="contact-label">GitHub</span>
+                </a>
+                <a href="https://leetcode.com" target="_blank">
+                    <i class="fas fa-code"></i> <span class="contact-label">LeetCode</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator" onclick="scrollToNext()">
+            <span class="scroll-text">Scroll Down</span>
+            <div class="scroll-icon"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <p>Passionate about building scalable systems that make a difference</p>
+        </div>
+        <div class="about-content">
+            <p>
+                I am a passionate <span class="highlight">Backend Engineer and Tech Lead</span> with over <span class="highlight-number">7 years</span> of experience in building scalable, 
+                distributed systems. My expertise spans across <span class="highlight-secondary">backend engineering</span>, <span class="highlight-secondary">cloud architecture</span>, and <span class="highlight-secondary">DevOps practices</span>. 
+                I have successfully led teams, architected microservices, and implemented robust infrastructure solutions 
+                that serve <span class="highlight-number">millions of users</span>.
+            </p>
+            <p>
+                Currently working at <span class="highlight">AiPrise</span>, I lead the development of a next-generation global identity verification platform 
+                that leverages AI to achieve <span class="highlight-number">80% automation</span> in identity verification processes. My work involves integrating 
+                advanced biometric APIs, optimizing cloud infrastructure, and ensuring system reliability at scale.
+            </p>
+            <p>
+                I am driven by the challenge of solving complex technical problems and building systems that make a real impact. 
+                My approach combines technical excellence with strategic thinking to deliver solutions that are not just 
+                functional but also scalable, maintainable, and cost-effective.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <h2>Technical Skills</h2>
+            <p>Technologies I work with to build amazing products</p>
+        </div>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Languages</h3>
+                <div class="skill-list">
+                    <span class="skill-tag"><i class="devicon-python-plain"></i> Python</span>
+                    <span class="skill-tag"><i class="devicon-java-plain"></i> Java</span>
+                    <span class="skill-tag"><i class="devicon-go-original-wordmark"></i> Go</span>
+                    <span class="skill-tag"><i class="devicon-javascript-plain"></i> JavaScript</span>
+                    <span class="skill-tag"><i class="devicon-c-plain"></i> C</span>
+                    <span class="skill-tag"><i class="devicon-html5-plain"></i> HTML/CSS</span>
+                    <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
+                    <span class="skill-tag"><i class="devicon-php-plain"></i> PHP</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-cogs"></i> Frameworks & Libraries</h3>
+                <div class="skill-list">
+                    <span class="skill-tag"><i class="devicon-django-plain"></i> Django</span>
+                    <span class="skill-tag"><i class="devicon-fastapi-plain"></i> FastAPI</span>
+                    <span class="skill-tag"><i class="devicon-flask-original"></i> Flask</span>
+                    <span class="skill-tag"><i class="fas fa-leaf"></i> Celery</span>
+                    <span class="skill-tag"><i class="fas fa-sitemap"></i> REST</span>
+                    <span class="skill-tag"><i class="fas fa-project-diagram"></i> GraphQL</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-database"></i> Databases</h3>
+                <div class="skill-list">
+                    <span class="skill-tag"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
+                    <span class="skill-tag"><i class="devicon-mysql-plain"></i> MySQL</span>
+                    <span class="skill-tag"><i class="devicon-mongodb-plain"></i> MongoDB</span>
+                    <span class="skill-tag"><i class="devicon-redis-plain"></i> Redis</span>
+                    <span class="skill-tag"><i class="fas fa-database"></i> DynamoDB</span>
+                    <span class="skill-tag"><i class="fas fa-database"></i> Cassandra</span>
+                    <span class="skill-tag"><i class="fas fa-search"></i> Elasticsearch</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                <div class="skill-list">
+                    <span class="skill-tag"><i class="devicon-amazonwebservices-original"></i> AWS</span>
+                    <span class="skill-tag"><i class="devicon-googlecloud-plain"></i> GCP</span>
+                    <span class="skill-tag"><i class="devicon-docker-plain"></i> Docker</span>
+                    <span class="skill-tag"><i class="devicon-kubernetes-plain"></i> Kubernetes</span>
+                    <span class="skill-tag"><i class="fas fa-infinity"></i> CI/CD</span>
+                    <span class="skill-tag"><i class="devicon-jenkins-line"></i> Jenkins</span>
+                    <span class="skill-tag"><i class="devicon-github-original"></i> GitHub Actions</span>
+                    <span class="skill-tag"><i class="devicon-gitlab-plain"></i> GitLab CI/CD</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Infrastructure & Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-tag"><i class="devicon-terraform-plain"></i> Terraform</span>
+                    <span class="skill-tag"><i class="fas fa-cloud"></i> CloudFormation</span>
+                    <span class="skill-tag"><i class="fas fa-chart-line"></i> Datadog</span>
+                    <span class="skill-tag"><i class="devicon-grafana-original"></i> Grafana</span>
+                    <span class="skill-tag"><i class="fas fa-bell"></i> Sentry</span>
+                    <span class="skill-tag"><i class="fas fa-chart-bar"></i> Cloudwatch</span>
+                    <span class="skill-tag"><i class="fas fa-stream"></i> Kafka</span>
+                    <span class="skill-tag"><i class="fas fa-server"></i> RabbitMQ</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-users"></i> Leadership & Management</h3>
+                <div class="skill-list">
+                    <span class="skill-tag"><i class="fas fa-users-cog"></i> Team Building</span>
+                    <span class="skill-tag"><i class="fas fa-tasks"></i> Agile/Scrum</span>
+                    <span class="skill-tag"><i class="fas fa-chart-line"></i> Strategic Planning</span>
+                    <span class="skill-tag"><i class="fas fa-handshake"></i> Stakeholder Management</span>
+                    <span class="skill-tag"><i class="fas fa-comments"></i> Cross-Department Collaboration</span>
+                    <span class="skill-tag"><i class="fas fa-chalkboard-teacher"></i> Mentorship</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header">
+            <h2>Professional Experience</h2>
+            <p>My journey in building scalable systems</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Tech Lead - <span class="company">AiPrise</span></h3>
+                            <p>Next-gen global identity verification platform leveraging AI</p>
+                        </div>
+                        <span class="timeline-date">Jan 2025 - Present</span>
+                    </div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Integrated advanced biometric APIs to strengthen fraud and deepfake detection, improving identity verification accuracy by <span class="highlight-number">80%</span></li>
+                            <li>Led migration of cloud infrastructure to <span class="highlight-secondary">Terraform</span>, enabling fully automated, auditable, multi-region deployments and reducing environment setup time by <span class="highlight-number">90%</span></li>
+                            <li>Upgraded deployment architecture by transitioning from Elastic Beanstalk to <span class="highlight-secondary">ECS with Fargate</span>, increasing scalability and deployment speed by <span class="highlight-number">40%</span></li>
+                            <li>Enhanced CI/CD pipelines to seamlessly support multi-region deployments, reducing release cycles by <span class="highlight-number">60%</span> and eliminating deployment errors</li>
+                            <li>Built foundational platform infrastructure for periodic reviews, enabling a <span class="highlight-number">30%</span> decrease in developer onboarding time</li>
+                            <li>Partnered with teammates to architect and launch a scalable search microservice handling <span class="highlight-number">200GB+</span> datasets, reducing search latency by <span class="highlight-number">50%</span></li>
+                            <li>Diagnosed performance and cost inefficiencies in our RDS setup, recommending targeted optimisations including a new database index that improved verification response times by <span class="highlight-number">50%</span></li>
+                            <li>Established a robust automated test framework and enabled the team to adopt test-driven development (TDD), increasing code coverage to <span class="highlight-number">80%</span> and reducing production bugs by <span class="highlight-number">40%</span></li>
+                            <li>Elevated engineering quality by conducting in-depth peer code reviews and mentoring team members, contributing to a <span class="highlight-number">45%</span> reduction in post-release defects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Tech Lead - <span class="company">PocketFM</span></h3>
+                            <p>One of the largest audio OTT platforms serving 200M users</p>
+                        </div>
+                        <span class="timeline-date">Sep 2022 - Dec 2024</span>
+                    </div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Architected and launched distributed backend systems for cashback and loyalty programs, ensuring reliable, large-scale distribution with <span class="highlight-number">99.99%</span> uptime for <span class="highlight-number">200M+</span> users globally</li>
+                            <li>Led migration of cashback and coin systems from monolith to <span class="highlight-secondary">microservices</span>, enabling independent scaling, faster deployments, and reducing production incidents by <span class="highlight-number">60%</span></li>
+                            <li>Implemented advanced custom caching layers and API optimizations, lowering infrastructure costs by <span class="highlight-number">40%</span> (achieving <span class="highlight-number">$1,500/month</span> in savings) and improving end-user experience with a <span class="highlight-number">50%</span> reduction in latency</li>
+                            <li>Collaborated with product and data science teams to deliver personalized recommendation engines, resulting in a <span class="highlight-number">30%</span> increase in user session duration and a <span class="highlight-number">25%</span> boost in user retention</li>
+                            <li>Mentored and managed <span class="highlight-number">10+</span> engineers, implementing sprint planning tools, test-driven development, and CI/CD pipelines to deliver high-quality, reliable releases</li>
+                            <li>Partnered with business stakeholders to deliver scalable monetization and growth features such as loyalty programs and lucky draws, driving a <span class="highlight-number">15%</span> increase in ARPU (Average Revenue Per User)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Senior Software Engineer - <span class="company">DasaPolls</span></h3>
+                            <p>Leading Southeast Asian insurtech platform</p>
+                        </div>
+                        <span class="timeline-date">May 2020 - Sep 2022</span>
+                    </div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Led the migration of core insurance services from a monolithic application to <span class="highlight-secondary">microservices architecture</span>, reducing resource usage by <span class="highlight-number">20%</span> and increasing deployment agility</li>
+                            <li>Designed and implemented scalable APIs and backend components used by over <span class="highlight-number">8,000 agents</span>, achieving a <span class="highlight-number">30%</span> reduction in system downtime</li>
+                            <li>Developed advanced automation for data ingesting and reconciliation, reducing query resolution time by <span class="highlight-number">50%</span> and streamlining support for financer operations</li>
+                            <li>Built and maintained CI/CD pipelines with rigorous automated testing, achieving <span class="highlight-number">95%</span> test coverage and reducing production issues by <span class="highlight-number">40%</span></li>
+                            <li>Reduced partner integration time by <span class="highlight-number">75%</span> through the development of efficient onboarding frameworks and custom management commands</li>
+                            <li>Collaborated with product managers and business stakeholders to deliver innovative insurance features, accelerating time-to-market of new offerings</li>
+                            <li>Mentored junior engineers on best practices in microservices, TDD, and secure coding, consistently elevating overall team productivity and code quality</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Full Stack Developer - <span class="company">AlgoFocus</span></h3>
+                        </div>
+                        <span class="timeline-date">Jul 2018 - Feb 2020</span>
+                    </div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Designed and delivered a robust B2C e-commerce platform using <span class="highlight-secondary">Django</span>, increasing client online sales conversions by <span class="highlight-number">25%</span></li>
+                            <li>Built a scalable cargo management software solution that reduced manual logistics operations by <span class="highlight-number">40%</span> and improved shipment processing times by <span class="highlight-number">30%</span></li>
+                            <li>Collaborated with <span class="highlight-secondary">StackFusion</span> to develop an annotation and training tool for automatic number plate recognition (ANPR), accelerating data labeling efficiency by <span class="highlight-number">50%</span></li>
+                            <li>Worked with healthcare providers to create a HIPAA-compliant diet food systems, replacing legacy CSV/SFTP workflows and reducing transaction processing times by <span class="highlight-number">70%</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <h2>Key Projects</h2>
+            <p>Showcasing my technical expertise through impactful projects</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fas fa-id-card"></i> Next-Gen Identity Verification Platform</h3>
+                    <span class="project-date">2025</span>
+                </div>
+                <p class="project-description">
+                    Integrated advanced biometric APIs to strengthen fraud and deepfake detection, improving identity 
+                    verification accuracy by <span class="highlight-number">80%</span>. Led migration to Terraform for fully automated multi-region deployments 
+                    and upgraded architecture from Elastic Beanstalk to ECS with Fargate.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">AWS</span>
+                    <span class="tech-badge">Terraform</span>
+                    <span class="tech-badge">ECS</span>
+                    <span class="tech-badge">Fargate</span>
+                    <span class="tech-badge">CI/CD</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fas fa-coins"></i> Cashback & Loyalty Platform</h3>
+                    <span class="project-date">2022-2024</span>
+                </div>
+                <p class="project-description">
+                    Architected distributed backend systems for cashback and loyalty programs serving <span class="highlight-number">200M+</span> users globally 
+                    with <span class="highlight-number">99.99%</span> uptime. Led migration from monolith to microservices, reducing production incidents by <span class="highlight-number">60%</span> 
+                    and infrastructure costs by <span class="highlight-number">40%</span>.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Django</span>
+                    <span class="tech-badge">Microservices</span>
+                    <span class="tech-badge">Redis</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">AWS</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fas fa-shield-alt"></i> Insurance Microservices Platform</h3>
+                    <span class="project-date">2020-2022</span>
+                </div>
+                <p class="project-description">
+                    Led migration of core insurance services from monolithic architecture to microservices, reducing 
+                    resource usage by <span class="highlight-number">20%</span>. Designed scalable APIs used by over <span class="highlight-number">8,000 agents</span> with <span class="highlight-number">30%</span> reduction in 
+                    system downtime and automated data reconciliation reducing query resolution time by <span class="highlight-number">50%</span>.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">FastAPI</span>
+                    <span class="tech-badge">Docker</span>
+                    <span class="tech-badge">Kubernetes</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">CI/CD</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fas fa-shopping-cart"></i> B2C E-commerce Platform</h3>
+                    <span class="project-date">2018-2020</span>
+                </div>
+                <p class="project-description">
+                    Designed and delivered a robust B2C e-commerce platform using Django, increasing client online sales 
+                    conversions by <span class="highlight-number">25%</span>. Implemented advanced features including real-time inventory management, payment 
+                    gateway integration, and personalized recommendation engine.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">Django</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">Redis</span>
+                    <span class="tech-badge">Celery</span>
+                    <span class="tech-badge">AWS</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fas fa-truck"></i> Cargo Management System</h3>
+                    <span class="project-date">2019</span>
+                </div>
+                <p class="project-description">
+                    Built a scalable cargo management software solution that reduced manual logistics operations by <span class="highlight-number">40%</span> 
+                    and improved shipment processing times by <span class="highlight-number">30%</span>. Implemented real-time tracking, automated routing, 
+                    and comprehensive reporting features.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Django</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">Redis</span>
+                    <span class="tech-badge">Celery</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fas fa-car"></i> ANPR Annotation Tool</h3>
+                    <span class="project-date">2019</span>
+                </div>
+                <p class="project-description">
+                    Collaborated with StackFusion to develop an annotation and training tool for automatic number plate 
+                    recognition (ANPR), accelerating data labeling efficiency by <span class="highlight-number">50%</span> and enhancing model accuracy. 
+                    Implemented workflow automation and quality control features.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Django</span>
+                    <span class="tech-badge">OpenCV</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">AWS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="section-header">
+            <h2>Key Achievements</h2>
+            <p>Milestones that define my career journey</p>
+        </div>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <i class="fas fa-rocket achievement-icon"></i>
+                <h3>Migration to Infrastructure as Code</h3>
+                <p>Pioneered the migration to Infrastructure as Code (IaC) at AiPrise, driving <span class="highlight-number">90%</span> faster multi-region 
+                   cloud deployments while establishing best practices for secure, scalable DevOps.</p>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-users achievement-icon"></i>
+                <h3>Scaled to 200M+ Users</h3>
+                <p>Architected and launched distributed backend systems at PocketFM, ensuring <span class="highlight-number">99.99%</span> uptime for <span class="highlight-number">200M+</span> 
+                   users while reducing infrastructure costs by <span class="highlight-number">40%</span>.</p>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-microchip achievement-icon"></i>
+                <h3>Microservices Transformation</h3>
+                <p>Initiated and led the adoption of microservices architecture at DasaPolls, reducing production 
+                   incidents by <span class="highlight-number">60%</span> and transforming system reliability and delivery velocity.</p>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-trophy achievement-icon"></i>
+                <h3>CI/CD Excellence</h3>
+                <p>Championed a test-first engineering culture, implemented robust CI/CD and TDD frameworks, which 
+                   increased code coverage to <span class="highlight-number">95%</span> and reduced critical production bugs by <span class="highlight-number">40%</span> across platforms.</p>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-chart-line achievement-icon"></i>
+                <h3>Performance Optimization</h3>
+                <p>Identified and resolved critical RDS performance bottlenecks at AiPrise, enabling a <span class="highlight-number">50%</span> faster 
+                   verification process and setting the foundation for future cost savings and scalability.</p>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-award achievement-icon"></i>
+                <h3>Team Leadership</h3>
+                <p>Awarded <span class="highlight">"Headliner"</span> for leading the delivery of a production-ready time-locked savings feature 
+                   at PocketFM, delivering <span class="highlight-number">$1M+</span> monthly cost savings and mentoring a team of <span class="highlight-number">10+</span> engineers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <div class="section-header">
+            <h2>Technical Blog</h2>
+            <p>Sharing my experiences and insights from building at scale</p>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card" onclick="openBlog('microservices')">
+                <div class="blog-header">
+                    <i class="fas fa-cubes blog-icon"></i>
+                </div>
+                <div class="blog-content">
+                    <h3>Migrating from Monolith to Microservices: A Practical Guide</h3>
+                    <p class="blog-date">January 15, 2024</p>
+                    <p class="blog-excerpt">
+                        Learn how we successfully migrated a monolithic application serving <span class="highlight-number">200M+</span> users to a 
+                        microservices architecture, reducing deployment time by <span class="highlight-number">60%</span> and improving system reliability.
+                    </p>
+                </div>
+            </div>
+
+            <div class="blog-card" onclick="openBlog('scaling')">
+                <div class="blog-header">
+                    <i class="fas fa-chart-line blog-icon"></i>
+                </div>
+                <div class="blog-content">
+                    <h3>Scaling Backend Systems for 200 Million Users</h3>
+                    <p class="blog-date">December 10, 2023</p>
+                    <p class="blog-excerpt">
+                        Discover the strategies and technologies we used to scale our backend infrastructure to handle 
+                        <span class="highlight-number">200 million</span> users while maintaining <span class="highlight-number">99.99%</span> uptime and reducing costs by <span class="highlight-number">40%</span>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="blog-card" onclick="openBlog('terraform')">
+                <div class="blog-header">
+                    <i class="fas fa-code blog-icon"></i>
+                </div>
+                <div class="blog-content">
+                    <h3>Infrastructure as Code: Terraform Best Practices</h3>
+                    <p class="blog-date">November 5, 2023</p>
+                    <p class="blog-excerpt">
+                        A comprehensive guide to implementing Infrastructure as Code using Terraform, including best 
+                        practices for multi-region deployments and automated testing.
+                    </p>
+                </div>
+            </div>
+
+            <div class="blog-card" onclick="openBlog('optimization')">
+                <div class="blog-header">
+                    <i class="fas fa-tachometer-alt blog-icon"></i>
+                </div>
+                <div class="blog-content">
+                    <h3>Database Optimization Techniques for High-Traffic Applications</h3>
+                    <p class="blog-date">October 20, 2023</p>
+                    <p class="blog-excerpt">
+                        Explore advanced database optimization techniques that helped us reduce query response times 
+                        by <span class="highlight-number">50%</span> and handle millions of concurrent requests efficiently.
+                    </p>
+                </div>
+            </div>
+
+            <div class="blog-card" onclick="openBlog('cicd')">
+                <div class="blog-header">
+                    <i class="fas fa-sync blog-icon"></i>
+                </div>
+                <div class="blog-content">
+                    <h3>Building Robust CI/CD Pipelines for Microservices</h3>
+                    <p class="blog-date">September 15, 2023</p>
+                    <p class="blog-excerpt">
+                        Learn how to build and maintain CI/CD pipelines that support rapid deployment cycles while 
+                        ensuring code quality and system reliability across multiple services.
+                    </p>
+                </div>
+            </div>
+
+            <div class="blog-card" onclick="openBlog('biometric')">
+                <div class="blog-header">
+                    <i class="fas fa-fingerprint blog-icon"></i>
+                </div>
+                <div class="blog-content">
+                    <h3>Implementing Biometric Authentication at Scale</h3>
+                    <p class="blog-date">August 8, 2023</p>
+                    <p class="blog-excerpt">
+                        Dive into the technical challenges and solutions for implementing biometric authentication 
+                        systems that can handle millions of verification requests with <span class="highlight-number">80%</span> accuracy improvement.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2>Get In Touch</h2>
+            <p>Let's discuss how we can work together</p>
+        </div>
+        <div class="contact-container">
+            <form class="contact-form" action="mailto:hariom.tiwari.006@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Hariom Tiwari. Built with passion and code.</p>
+        <p>
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/om06" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:hariom.tiwari.006@gmail.com"><i class="fas fa-envelope"></i></a>
+        </p>
+    </footer>
+
+    <script>
+        // Mobile Navigation Handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            const navItems = document.querySelectorAll('.nav-links a');
+            
+            // Toggle mobile menu
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMobileMenu();
+            });
+            
+            // Close menu when clicking overlay
+            if (overlay) {
+                overlay.addEventListener('click', closeMobileMenu);
+            }
+            
+            // Close menu when clicking a nav link
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        closeMobileMenu();
+                    }
+                });
+            });
+            
+            // Close menu on window resize if needed
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Functions
+            function toggleMobileMenu() {
+                const isOpen = navLinks.classList.contains('show');
+                
+                if (isOpen) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            }
+            
+            function openMobileMenu() {
+                navLinks.classList.add('show');
+                if (overlay) overlay.classList.add('show');
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+            
+            function closeMobileMenu() {
+                navLinks.classList.remove('show');
+                if (overlay) overlay.classList.remove('show');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        });
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80; // Height of sticky nav
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    
+        // Blog click handler
+        function openBlog(blogId) {
+            const blogTitles = {
+                'microservices': 'Migrating from Monolith to Microservices: A Practical Guide',
+                'scaling': 'Scaling Backend Systems for 200 Million Users',
+                'terraform': 'Infrastructure as Code: Terraform Best Practices',
+                'optimization': 'Database Optimization Techniques for High-Traffic Applications',
+                'cicd': 'Building Robust CI/CD Pipelines for Microservices',
+                'biometric': 'Implementing Biometric Authentication at Scale'
+            };
+            
+            alert(`Opening blog: ${blogTitles[blogId]}\n\nIn a real implementation, this would navigate to the full blog post.`);
+        }
+    
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+    
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+    
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Add typing effect to hero title
+        const heroTitle = document.querySelector('.hero h1');
+        const originalText = heroTitle.innerHTML;
+        heroTitle.innerHTML = '';
+        let i = 0;
+    
+        function typeWriter() {
+            if (i < originalText.length) {
+                heroTitle.innerHTML = originalText.slice(0, i + 1);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+    
+        // Start typing effect when page loads
+        window.addEventListener('load', typeWriter);
+    
+        // Add floating particles effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = Math.random() * 4 + 'px';
+            particle.style.height = particle.style.width;
+            
+            const gradients = [
+                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+            ];
+            
+            particle.style.background = gradients[Math.floor(Math.random() * gradients.length)];
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = Math.random() * 0.5 + 0.3;
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(particle);
+    
+            const duration = Math.random() * 3000 + 2000;
+            particle.animate([
+                { 
+                    transform: 'translate(0, 0) scale(1)', 
+                    opacity: particle.style.opacity 
+                },
+                { 
+                    transform: `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) scale(0)`, 
+                    opacity: 0 
+                }
+            ], {
+                duration: duration,
+                easing: 'ease-out'
+            }).onfinish = () => particle.remove();
+        }
+    
+        // Create particles periodically
+        setInterval(createParticle, 300);
+    
+        // Form submission handler
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            setTimeout(() => {
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            }, 100);
+        });
+    
+        // Add hover effect to skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) translateY(-2px)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+                // Add counter animation for achievements
+                function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            
+            updateCounter();
+        }
+
+        // Scroll to next section function
+        function scrollToNext() {
+            const aboutSection = document.getElementById('about');
+            aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Hide scroll indicator when user scrolls
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero');
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition > 100) {
+                hero.classList.add('scrolled');
+            } else {
+                hero.classList.remove('scrolled');
+            }
+        });
+
+        // Auto-scroll on page load after a delay (optional)
+        window.addEventListener('load', function() {
+            // Show scroll indicator after hero content loads
+            setTimeout(() => {
+                const scrollIndicator = document.querySelector('.scroll-indicator');
+                if (scrollIndicator) {
+                    scrollIndicator.style.opacity = '1';
+                }
+            }, 2000);
+        });
+
+        // Handle responsive navigation for mobile
+        window.addEventListener('resize', function() {
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const icon = menuToggle.querySelector('i');
+            
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('show');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        });
+    
+        // Create glowing cursor effect (optional - can be removed if you don't want it)
+        const cursor = document.createElement('div');
+        cursor.style.width = '20px';
+        cursor.style.height = '20px';
+        cursor.style.borderRadius = '50%';
+        cursor.style.position = 'fixed';
+        cursor.style.pointerEvents = 'none';
+        cursor.style.zIndex = '9999';
+        cursor.style.background = 'radial-gradient(circle, rgba(124, 58, 237, 0.5) 0%, transparent 70%)';
+        cursor.style.display = 'none'; // Hidden by default
+        document.body.appendChild(cursor);
+    
+        // Only show custom cursor on desktop
+        if (window.innerWidth > 768) {
+            cursor.style.display = 'block';
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+        }
+    
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add floating animation to certain elements
+            document.querySelectorAll('.achievement-icon').forEach((icon, index) => {
+                icon.style.animationDelay = `${index * 0.2}s`;
+                icon.classList.add('floating');
+            });
+        });
+    </script>
+</body>
+</html>
